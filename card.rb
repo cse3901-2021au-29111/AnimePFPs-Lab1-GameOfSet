@@ -11,6 +11,18 @@ class Card
   @number_of_shapes
   @fill
 
+  #constructor
+  def initialize(shape, color, number, fill)
+
+    set_shape(shape)
+    set_fill(fill)
+    set_number_of_shapes(number)
+    set_color(color)
+
+  end
+
+
+
   #setter methods
   def set_shape(shape)
     @shape = shape
@@ -45,19 +57,38 @@ class Card
     @fill
   end
 
-  #Check if two cards have all matching elements
+  #Return the match value of two cards
+  # Any two cards could be part of the same set
+  # the way to find a set of 3 with cards c1 c2 and c3 :
+  # c1.check_match(c2) == c2.check_match(c3) == c1.check_match(c3)
+  # The same relationships need to hold across 3 cards for each individual property
   def check_match(card)
-    (@shape == card.get_shape) && (@color == card.get_color) &&
-      (@number_of_shapes == card.get_number_of_shapes) && (@fill == card.get_fill)
+
+    match_value = 0
+
+    match_value += 1 if (@shape == card.get_shape)
+    match_value *= 10
+
+    match_value += 1 if(@color == card.get_color)
+    match_value *= 10
+
+    match_value += 1 if(@number_of_shapes == card.get_number_of_shapes)
+    match_value *= 10
+
+    match_value += 1if(@fill == card.get_fill)
+
+    return match_value
   end
 
-  #check if two cards have no matching elements
-  def check_no_match(card)
-    (@shape != card.get_shape) && (@color != card.get_color) &&
-      (@number_of_shapes != card.get_number_of_shapes) && (@fill != card.get_fill)
-  end
+
 
 
 end
 
 
+#a = Card.new("sqaure", "blue", 5, "full")
+#x = Card.new("sqaure", "blue", 5, "full")
+#y = Card.new("sqaure", "blue", 5, "full")
+#z = Card.new("sqaure", "blue", 5, "full")
+#puts a.get_color
+#puts (x.check_match(y) == x.check_match(z) && x.check_match(y)== y.check_match(z))
