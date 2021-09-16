@@ -18,7 +18,8 @@ class Deck
   def initialize(mode)
     base_properties
     create_cards
-    @max, @size = @cards.length #initizliaing these here since this should be true independent of property changes
+    @max = @size = @cards.length #initizliaing these here since this should be true independent of property changes
+    @size = @cards.length
     @cards.shuffle! #randomize card order
   end
 
@@ -61,6 +62,10 @@ class Deck
   def add_to_deck(incoming_cards)
     @cards.concat(incoming_cards).shuffle
     @size += incoming_cards.length
+  end
+
+  def size
+    @size
   end
 
 end

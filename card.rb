@@ -84,12 +84,3 @@ class Card
   end
 
 end
-
-
-#a = Card.new("sqaure", "blue", 5, "full")
-#x = Card.new("round", "blue", 5, "full")
-#y = Card.new("sqaure", "blue", 5, "full")
-#z = Card.new("sqaure", "blue", 5, "full")
-#puts a.get_color
-#puts (x.check_match(y))
-
