@@ -64,18 +64,18 @@ class Card
   # The same relationships need to hold across 3 cards for each individual property
   def check_match(card)
 
-    match_value = 0
+    match_value = 0b0
 
-    match_value += 1 if (@shape == card.get_shape)
-    match_value *= 10
+    match_value += 0b1 if (@shape == card.get_shape)
+    match_value *= 2
 
-    match_value += 1 if(@color == card.get_color)
-    match_value *= 10
+    match_value += 0b1 if(@color == card.get_color)
+    match_value *= 2
 
-    match_value += 1 if(@number_of_shapes == card.get_number_of_shapes)
-    match_value *= 10
+    match_value += 0b1 if(@number_of_shapes == card.get_number_of_shapes)
+    match_value *= 2
 
-    match_value += 1if(@fill == card.get_fill)
+    match_value += 0b1if(@fill == card.get_fill)
 
     return match_value
   end
@@ -87,8 +87,8 @@ end
 
 
 #a = Card.new("sqaure", "blue", 5, "full")
-#x = Card.new("sqaure", "blue", 5, "full")
+#x = Card.new("round", "blue", 5, "full")
 #y = Card.new("sqaure", "blue", 5, "full")
 #z = Card.new("sqaure", "blue", 5, "full")
 #puts a.get_color
-#puts (x.check_match(y) == x.check_match(z) && x.check_match(y)== y.check_match(z))
+#puts (x.check_match(y))
