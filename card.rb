@@ -21,8 +21,6 @@ class Card
 
   end
 
-
-
   #setter methods
   def set_shape(shape)
     @shape = shape
@@ -80,8 +78,10 @@ class Card
     return match_value
   end
 
-
-
+  #right now this is for testing purposes
+  def to_string()
+    puts(@fill, @number_of_shapes, @shape, @color)
+  end
 
 end
 
@@ -92,3 +92,4 @@ end
 #z = Card.new("sqaure", "blue", 5, "full")
 #puts a.get_color
 #puts (x.check_match(y))
+
