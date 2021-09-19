@@ -90,7 +90,7 @@ class Card
   end
 
   def present_card()
-    put @unicode
+    puts @unicode
   end
 
   def calculate_unicode()
