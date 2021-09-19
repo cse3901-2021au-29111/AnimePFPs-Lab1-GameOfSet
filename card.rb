@@ -1,4 +1,4 @@
-
+require 'ansi/code'
 # This represents card objects for the game of set
 # should have the 4 properties of the cards, as well
 # setter and getter methods for each
@@ -84,11 +84,12 @@ class Card
   end
 
   def present_cards()
-    cardCode = check_cards(thisCard)
-    
+    cardCode = check_cards()
+
     case @number_of_shapes
     when 1
-      puts "   " + cardCode + "   \t"
+      cardCode =  "   " + cardCode + "   \t"
+      puts cardCode.force_encoding('utf-8')
     when 2
       puts " " + cardCode + "   " + cardCode + " \t"
     when 3
@@ -136,8 +137,10 @@ class Card
     when "Blue"
       cardCode = "\033[0;34m" + cardCode
     end
-
     return cardCode
   end
 
 end
+
+d= Card.new("Square","Blue",1,"None",)
+d.present_cards

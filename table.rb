@@ -40,7 +40,6 @@ class Table
     @table_size
   end
 
-  
 
 end
 
