@@ -83,4 +83,61 @@ class Card
     puts(@fill, @number_of_shapes, @shape, @color)
   end
 
+  def present_cards()
+    cardCode = check_cards(thisCard)
+    
+    case @number_of_shapes
+    when 1
+      puts "   " + cardCode + "   \t"
+    when 2
+      puts " " + cardCode + "   " + cardCode + " \t"
+    when 3
+      puts " " +cardCode + " " + cardCode + " " + cardCode + " \t"
+    end
+  end
+
+  def check_cards()
+    cardCode = ""
+    case @shape
+    when "Square"
+      case @fill
+      when "None"
+        cardCode = "\u25A1"
+      when "Full"
+        cardCode = "\u25A0"
+      when"Trapped"
+        cardCode = "\u25A3"
+      end
+    when "Circle"
+      case @fill
+      when "None"
+        cardCode = "\u25CB"
+      when "Full"
+        cardCode = "\u25CF"
+      when"Trapped"
+        cardCode = "\u25C9"
+      end
+    when "Diamond"
+      case @fill
+      when "None"
+        cardCode = "\u25C7"
+      when "Full"
+        cardCode = "\u25C6"
+      when"Trapped"
+        cardCode = "\u25C8"
+      end
+    end
+
+    case @color
+    when "Red"
+      cardCode = "\033[0;31m" + cardCode
+    when "Green"
+      cardCode = "\033[0;32m" + cardCode
+    when "Blue"
+      cardCode = "\033[0;34m" + cardCode
+    end
+
+    return cardCode
+  end
+
 end
