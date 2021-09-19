@@ -25,9 +25,6 @@ class Table
     @table_size += 1
   end
 
-
-
-
   def base
     @table_max = 12
   end
@@ -41,8 +38,38 @@ class Table
   end
 
 
+  def display_table
+    for card in @cards_showing
+      card.to_string
+    end
+  end
+
+  def check_set(pos1, pos2, pos3)
+
+    mv1 = @cards_showing[pos1].check_match(@cards_showing[pos2])
+    mv2 = @cards_showing[pos1].check_match(@cards_showing[pos3])
+    mv3 = @cards_showing[pos2].check_match(@cards_showing[pos3])
+
+    (mv1 == mv2) && (mv2 == mv3)
+
+  end
+
+
+  def remove_set(pos)
+
+    #return 0 if not a set
+    if !check_set(pos[0], pos[1], pos[2])
+      return false
+    end
+
+    pos.sort!
+    pos.reverse!
+    for i in 0..2
+      pos.delete_at(pos[i])
+    end
+
+  end
+
+
 end
 
-d = Deck.new("")
-t = Table.new(d)
-puts d.size

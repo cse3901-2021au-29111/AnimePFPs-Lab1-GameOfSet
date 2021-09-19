@@ -10,7 +10,7 @@ class Card
   @color
   @number_of_shapes
   @fill
-
+  @cardcode
   #constructor
   def initialize(shape, color, number, fill)
 
