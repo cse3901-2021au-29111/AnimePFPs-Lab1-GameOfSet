@@ -41,7 +41,7 @@ class Table
 
   def display_table
     for card in @cards_showing
-      card.to_string
+      card.present_card()
       puts("")
     end
   end
