@@ -9,6 +9,7 @@ class Card
   @color
   @number_of_shapes
   @fill
+  @unicode
 
   #constructor
   def initialize(shape, color, number, fill)
@@ -17,6 +18,7 @@ class Card
     set_fill(fill)
     set_number_of_shapes(number)
     set_color(color)
+    set_unicode(calculate_unicode())
 
   end
 
@@ -31,6 +33,10 @@ class Card
 
   def set_number_of_shapes(num)
     @number_of_shapes = num
+  end
+
+  def set_unicode(code)
+    @unicode = code
   end
 
   def set_fill(fill)
@@ -82,21 +88,11 @@ class Card
     puts(@fill, @number_of_shapes, @shape, @color)
   end
 
-  def present_cards()
-    cardCode = check_cards()
-
-    case @number_of_shapes
-    when 1
-      cardCode =  "   " + cardCode + "   \t"
-      puts cardCode.force_encoding('utf-8')
-    when 2
-      puts " " + cardCode + "   " + cardCode + " \t"
-    when 3
-      puts " " +cardCode + " " + cardCode + " " + cardCode + " \t"
-    end
+  def present_card()
+    puts @unicode
   end
 
-  def check_cards()
+  def calculate_unicode()
     cardCode = ""
     case @shape
     when "Square"
@@ -135,6 +131,15 @@ class Card
       cardCode = "\033[0;32m" + cardCode
     when "Blue"
       cardCode = "\033[0;34m" + cardCode
+    end
+
+    case @number_of_shapes
+    when 1
+      cardCode =  "   " + cardCode + "   \t"
+    when 2
+      cardCode = " " + cardCode + "   " + cardCode + " \t"
+    when 3
+      cardCode = " " +cardCode + " " + cardCode + " " + cardCode + " \t"
     end
     return cardCode
   end
