@@ -141,6 +141,3 @@ class Card
   end
 
 end
-
-d= Card.new("Square","Blue",1,"None",)
-d.present_cards
