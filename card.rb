@@ -1,4 +1,3 @@
-require 'ansi/code'
 # This represents card objects for the game of set
 # should have the 4 properties of the cards, as well
 # setter and getter methods for each
