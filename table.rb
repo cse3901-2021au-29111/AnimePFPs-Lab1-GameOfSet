@@ -4,7 +4,7 @@ load "deck.rb"
 class Table
 
   @table_max #maximum cards displayed at a time
-  @table_size #current cards on table
+  @table_size #current # of cards on table
   @cards_showing #the cards on the table
 
 
