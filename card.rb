@@ -18,7 +18,7 @@ class Card
     set_fill(fill)
     set_number_of_shapes(number)
     set_color(color)
-
+    set_cardCode
   end
 
   #setter methods
@@ -81,6 +81,53 @@ class Card
   #right now this is for testing purposes
   def to_string()
     puts(@fill, @number_of_shapes, @shape, @color)
+  end
+
+  def display_card 
+    @number_of_shapes.times {print "#{@cardcode}\t"}
+    puts ""
+  end
+
+  def set_cardCode
+    case @shape
+    when "Square"
+      case @fill
+      when "None"
+        @cardcode = "\u25A1"
+      when "Full"
+        @cardcode = "\u25A0"
+      when"Trapped"
+        @cardcode = "\u25A3"
+      end
+    when "Circle"
+      case @fill
+      when "None"
+        @cardcode = "\u25CB"
+      when "Full"
+        @cardcode = "\u25CF"
+      when"Trapped"
+        @cardcode = "\u25C9"
+      end
+    when "Diamond"
+      case @fill
+      when "None"
+        @cardcode = "\u25C7"
+      when "Full"
+        @cardcode = "\u25C6"
+      when"Trapped"
+        @cardcode = "\u25C8"
+      end
+    end
+
+    case @color
+    when "Red"
+      @cardcode = "\033[0;31m" + @cardcode
+    when "Green"
+      @cardcode = "\033[0;32m" + @cardcode
+    when "Blue"
+      @cardcode = "\033[0;34m" + @cardcode
+    end
+  
   end
 
 end

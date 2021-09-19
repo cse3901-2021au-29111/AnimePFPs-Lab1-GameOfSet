@@ -25,9 +25,9 @@ class Deck
 
   #generates the base properties, I want this to become more flexible
   def base_properties
-    @shapes = ["Square", "Circle", "Triangle"]
+    @shapes = ["Square", "Circle", "Diamond"]
     @colors = ["Blue", "Red",  "Green"]
-    @fills = ["None", "Full", "Dash"]
+    @fills = ["None", "Full", "Trapped"]
     @numbers = [1, 2, 3]
   end
 
@@ -53,7 +53,6 @@ class Deck
   def draw_card
     @size -= 1
     @cards.pop
-
   end
 
   #adds a group of cards to the deck

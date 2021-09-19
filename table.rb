@@ -4,7 +4,7 @@ load "deck.rb"
 class Table
 
   @table_max #maximum cards displayed at a time
-  @table_size #current cards on table
+  @table_size #current # of cards on table
   @cards_showing #the cards on the table
 
 
@@ -15,7 +15,6 @@ class Table
     base#just like the deck I want this to be adaptable if we can
     @table_max.times {@cards_showing.push(deck.draw_card)}
     @table_size = @cards_showing.length
-
   end
 
   #add a card to the playing field
@@ -37,10 +36,9 @@ class Table
     @table_size
   end
 
-
   def display_table
     for card in @cards_showing
-      card.to_string
+      card.display_card
     end
   end
 
@@ -54,7 +52,8 @@ class Table
 
   end
 
-
+  #checks if a set is removable, and if so removes them returns
+  # false if not removable
   def remove_set(pos)
 
     #return 0 if not a set
@@ -70,6 +69,10 @@ class Table
 
   end
 
+  def shuffle(d)
+    d.add_to_deck(@cards_showing)
+    @table_max.times {@cards_showing.push(d.draw_card)}
+    @table_size = @cards_showing.length
+  end
 
 end
-
