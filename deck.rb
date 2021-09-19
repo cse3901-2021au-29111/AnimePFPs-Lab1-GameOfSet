@@ -51,8 +51,8 @@ class Deck
   # any methods calling this must check that the size of
   # the instance is > 0
   def draw_card
-    @cards.pop
     @size -= 1
+    @cards.pop
   end
 
   #adds a group of cards to the deck

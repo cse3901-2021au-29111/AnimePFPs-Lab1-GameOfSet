@@ -15,7 +15,6 @@ class Table
     base#just like the deck I want this to be adaptable if we can
     @table_max.times {@cards_showing.push(deck.draw_card)}
     @table_size = @cards_showing.length
-
   end
 
   #add a card to the playing field
@@ -40,9 +39,24 @@ class Table
     @table_size
   end
 
+  def display_table
+    for card in @cards_showing
+      card.to_string
+      puts("")
+    end
+  end
 
+  def remove_set(nums)
+    0
+  end
+
+  def has_matches
+    1
+  end
+
+  def shuffle(d)
+    d.add_to_deck(@cards_showing)
+    @table_max.times {@cards_showing.push(d.draw_card)}
+    @table_size = @cards_showing.length
+  end
 end
-
-d = Deck.new("")
-t = Table.new(d)
-puts d.size
