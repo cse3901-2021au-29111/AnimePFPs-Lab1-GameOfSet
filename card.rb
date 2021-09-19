@@ -79,7 +79,7 @@ class Card
   end
 
   #right now this is for testing purposes
-  def to_string()
+  def to_string
     puts(@fill, @number_of_shapes, @shape, @color)
   end
 
