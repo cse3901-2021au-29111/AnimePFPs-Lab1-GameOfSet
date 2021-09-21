@@ -60,7 +60,8 @@ class Deck
   # original purpose is to eat cards off the table if there's an impossible position
   # incoming_cards must be an array of cards
   def add_to_deck(incoming_cards)
-    @cards.concat(incoming_cards).shuffle
+    @cards.concat(incoming_cards)
+    @cards.shuffle!
     @size += incoming_cards.length
   end
 

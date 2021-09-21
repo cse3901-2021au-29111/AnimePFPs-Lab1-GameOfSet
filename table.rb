@@ -92,9 +92,9 @@ class Table
   end
 
   #Shuffles the current table into the deck, then redraws to table_max cards
-  # (Might need fixed, check after every other method is implemented)
   def shuffle(d)
     d.add_to_deck(@cards_showing)
+    @cards_showing.clear
     @table_max.times {@cards_showing.push(d.draw_card)}
     @table_size = @cards_showing.length
   end
