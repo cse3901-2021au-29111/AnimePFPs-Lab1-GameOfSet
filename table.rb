@@ -56,9 +56,9 @@ class Table
     # continue statement skips the loop if it is iterating through the same element in the outer loop.
     for c1 in @cards_showing
       for c2 in @cards_showing
-        continue if c1 == c2
+        next if c1 == c2
         for c3 in @cards_showing
-          continue if c1 == c3 || c2 == c3
+          next if c1 == c3 || c2 == c3
           is_set = c1.check_match(c2) == c2.check_match(c3) && c2.check_match(c3 )== c1.check_match(c3)
           #return 1 if is_set is true.
           return 1 if is_set
