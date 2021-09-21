@@ -21,7 +21,7 @@ def main
     nums[0] = gets.to_i
     nums[1] = gets.to_i
     nums[2] = gets.to_i
-    t.remove_set(nums)
+    t.remove_set(nums,d)
     if t.has_matches == 0
       if d.size == 0
         game_run = 0

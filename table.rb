@@ -52,16 +52,27 @@ class Table
 
   #Compares 3 cards, removes them if they are a set, or outputs a message telling the user they were not a valid set
   # assumes that there are no duplicate numbers in nums
-  # (Needs done), nums is an array of 3 numbers corresponding to the location of a card in cards_showing
-  # d is the deck to draw from
-  def remove_set(nums)
-    #remove all (only 1 if cards are unique) the occurrences of nums in @cards_showing
-    @cards_showing.difference(nums)
+  def remove_set(nums,deck)
+    nums.sort
+    c0 = @cards_showing[nums[0]]
+    c1 = @cards_showing[nums[1]]
+    c2 = @cards_showing[nums[2]]
+    comp1 = c0.check_match(c1)
+    comp2 = c1.check_match(c2)
+    comp3 = c0.check_match(c2)
+    if (comp1 == comp2) && (comp1 == comp3)
+      @cards_showing.delete_at(nums[0])
+      nums[1] -= 1
+      @cards_showing.delete_at(nums[1])
+      nums[2] -= 2
+      @cards_showing.delete_at(nums[2])
+      3.times {@cards_showing.push(deck.draw_card)}
+    else
+      puts("Sorry, that was not a valid match. Try again.")
+    end
   end
 
   #Checks if there are any matches of cards on the table
-  # (Needs Done), basically check every possible combination of cards on the table
-  # if there are zero matches then return 0, else return 1(should try and use a break to kill the loop if one is found)
   def has_matches
     #iterate over cards_showing to determine if there exist any sets on the table.
     # continue statement skips the loop if it is iterating through the same element in the outer loop.
