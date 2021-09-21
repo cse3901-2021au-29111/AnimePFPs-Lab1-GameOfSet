@@ -4,12 +4,20 @@ load "deck.rb"
 load "card.rb"
 
 def main
+  starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  # time consuming operation
+  
   puts("Enter '1' to start a game, enter anything else to kill the program")
   user_input = gets.to_i
   game_run = 0
   if user_input == 1
     puts("hi")
     game_run = 1
+
+    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    elapsed = ending - starting
+    puts(elapsed) 
+    
     end
   d = Deck.new("")
   t = Table.new(d)
