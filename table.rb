@@ -55,14 +55,29 @@ class Table
   # (Needs done), nums is an array of 3 numbers corresponding to the location of a card in cards_showing
   # d is the deck to draw from
   def remove_set(nums)
-    0
+    #remove all (only 1 if cards are unique) the occurrences of nums in @cards_showing
+    @cards_showing.difference(nums)
   end
 
   #Checks if there are any matches of cards on the table
   # (Needs Done), basically check every possible combination of cards on the table
   # if there are zero matches then return 0, else return 1(should try and use a break to kill the loop if one is found)
   def has_matches
-    1
+    #iterate over cards_showing to determine if there exist any sets on the table.
+    # continue statement skips the loop if it is iterating through the same element in the outer loop.
+    for c1 in @cards_showing
+      for c2 in @cards_showing
+        next if c1 == c2
+        for c3 in @cards_showing
+          next if c1 == c3 || c2 == c3
+          is_set = c1.check_match(c2) == c2.check_match(c3) && c2.check_match(c3)== c1.check_match(c3)
+          #return 1 if is_set is true.
+          return 1 if is_set
+        end
+      end
+    end
+    #return 0 if no set is found.
+    0
   end
 
   #Shuffles the current table into the deck, then redraws to table_max cards
