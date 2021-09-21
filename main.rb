@@ -1,4 +1,4 @@
-#main file to run the game from
+# main file to run the game from
 load "table.rb"
 load "deck.rb"
 load "card.rb"
