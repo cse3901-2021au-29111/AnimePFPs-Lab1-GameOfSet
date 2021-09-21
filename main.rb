@@ -8,9 +8,8 @@ def main
   user_input = gets.to_i
   game_run = 0
   if user_input == 1
-    puts("hi")
     game_run = 1
-    end
+  end
   d = Deck.new("")
   t = Table.new(d)
   while game_run == 1
@@ -27,7 +26,6 @@ def main
       if d.size == 0
         game_run = 0
       end
-    else
       t.shuffle(d)
     end
   end
