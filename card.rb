@@ -8,12 +8,14 @@
 class Card
   @shape
   @color
-  @number_of_shapes
-  @fill
+  @number_of_shapes #these are the basic properties of the card
+  @fill             #they are self describing
   @cardcode
+
+
+
   #constructor
   def initialize(shape, color, number, fill)
-
     set_shape(shape)
     set_fill(fill)
     set_number_of_shapes(number)
@@ -32,6 +34,10 @@ class Card
 
   def set_number_of_shapes(num)
     @number_of_shapes = num
+  end
+
+  def set_unicode(code)
+    @unicode = code
   end
 
   def set_fill(fill)
@@ -78,17 +84,28 @@ class Card
     return match_value
   end
 
-  #right now this is for testing purposes
-  def to_string()
+  #prints all attributes of a card
+  #no longer in use, but useful for testing
+  # legacy, and might have more extendablity than
+  # our actual representation
+  def to_string
     puts(@fill, @number_of_shapes, @shape, @color)
   end
 
+  #returns the string value of a card (does NOT print it)
   def display_card 
-    @number_of_shapes.times {print "#{@cardcode}\t"}
-    puts ""
+    #@number_of_shapes.times {print "#{@cardcode}\t"}
+    str = ""
+    @number_of_shapes.times {str.concat("#{@cardcode} ")}
+    str.concat("    ") if @number_of_shapes == 1
+    str.concat("  ") if @number_of_shapes == 2
+
+    return str
   end
 
+  #set the value used to generate a shape
   def set_cardCode
+    cardCode = ""
     case @shape
     when "Square"
       case @fill
@@ -127,7 +144,9 @@ class Card
     when "Blue"
       @cardcode = "\033[0;34m" + @cardcode
     end
-  
+
+    return cardCode
+
   end
 
 end
