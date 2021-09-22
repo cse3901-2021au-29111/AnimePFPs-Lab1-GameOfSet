@@ -7,6 +7,7 @@ load "card.rb"
 def main
   puts("Enter '1' to start a game, enter anything else to kill the program")
   user_input = gets.to_i
+  god_mode = false
   game_run = false
   if user_input == 1
     game_run = true
@@ -24,6 +25,7 @@ def main
     puts("Please enter 3 numbers between 1-12, one at a time, to check if those cards are a set")
     nums = Array.new
     if god_mode
+      puts god_mode
       until t.has_matches?
         t.shuffle(d)
       end
@@ -34,7 +36,6 @@ def main
       nums[2] = gets.to_i - 1
     end
 
-    nums = t.has_matches?
     t.remove_set(nums)
     t.fill_table(d)
     unless t.has_matches?
