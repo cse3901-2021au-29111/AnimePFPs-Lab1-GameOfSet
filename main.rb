@@ -25,7 +25,6 @@ def main
     puts("Please enter 3 numbers between 1-12, one at a time, to check if those cards are a set")
     nums = Array.new
     if god_mode
-      puts god_mode
       until t.has_matches?
         t.shuffle(d)
       end
